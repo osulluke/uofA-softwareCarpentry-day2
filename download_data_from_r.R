@@ -35,3 +35,19 @@ analyze("United States")
 analyze("France")
 analyze("Japan")
 analyze("Canada")
+
+for (w in dat) {
+  print(dat$country)
+}
+
+##IMPORTANT!!! THE SINGLE | IS AN ELEMENT-WISE COMPARATOR, NOT THE || THAT I'M USED TO!!!
+
+gapminder_52_97 <- subset(dat, dat$year == 1952 | dat$year == 1997)
+gapminder_67_07 <- subset(dat, dat$year == 1967 | dat$year == 2007)
+
+##IMPORTANT!!! CRITICAL TO INCLUDE THE row.names argument, as well as the quote arg!!!
+write.csv(file="data/gapminder_52_97.csv", gapminder_52_97, row.names = FALSE, quote = FALSE)
+write.csv(file="data/gapminder_67_07.csv", gapminder_67_07, row.names = FALSE, quote = FALSE)
+summary(dat)
+str(dat)
+for (year in dat$year)
