@@ -5,6 +5,9 @@ date: "November 6, 2016"
 output: html_document
 ---
 
+#GDP of Uganda, USA and Canada
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -16,18 +19,44 @@ usa <- subset(country_data, country_data$country == "United States")
 canada <- subset(country_data, country_data$country == "Canada")
 
 plot(uganda$year, uganda$gdpPercap, xlab = "year", ylab = "GDP", main = "Uganda")
+```
+
+\n
+*Uganda's GDP Increases upto 1970s , takes a dip in the 80s and then has been increasing after that. *
+```{r echo=FALSE}
 plot(usa$year, usa$gdpPercap, xlab = "year", ylab = "GDP", main = "USA")
+```
+\n
+
+*USA's GDP has seen constant increases from the 50s to the 2000s.*
+```{r echo=FALSE}
 plot(canada$year, canada$gdpPercap, xlab = "year", ylab = "GDP", main = "Canada")
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+*Canada's GDP has seen constant increases from the 50s to the 2000s.*
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+##Life Expectancy values in each continent
 
-## Including Plots
 
-You can also embed plots, for example:
+```{r echo=FALSE,results='asis'}
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+cat("  \n  \n")
+analyse <- function(cname)
+{
+  continent_data = subset(country_data, country_data$continent == cname)
+  
+  cat("The mean value of life expectancy for ",cname," is ",mean(continent_data$lifeExp),"years.  \n")
+  cat("The minimum value of life expectancy is ",min(continent_data$lifeExp),"years.  \n")
+  cat("The maximum value of life expectancy is ",max(continent_data[,5]),"years.  \n")
+  }
+cont_list = levels(country_data$continent)
+for (c in cont_list)
+{
+  cat('----------------------------------------',c,'--------------------------------  \n')
+  analyse (noquote(c))
+  cat("\n")
+}
+
+```
