@@ -58,3 +58,12 @@ fence(best_prac = best_practice, asterisk = asterisk)
 best_practice
 fence(best_prac = "This is a short string", asterisk = "*")
 fence(best_prac = "Test", asterisk = "***********")
+
+for (w in best_practice) {
+  print(w)
+}
+
+
+help("file.create")
+
+
