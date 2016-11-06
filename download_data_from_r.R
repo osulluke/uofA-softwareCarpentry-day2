@@ -19,7 +19,8 @@ summary(uganda)
 str(uganda)
 uganda
 
-analyze <- function(cName) {
+analyze <- function(file_name, cName) {
+  dat <- read.csv(file_name)
   my_country <- subset(dat, dat$country == cName)
   print(mean(my_country$lifeExp))
   print(min(my_country$lifeExp))
@@ -28,13 +29,13 @@ analyze <- function(cName) {
 }
 help("plot")
 
-analyze("Algeria")
-analyze("Afghanistan")
-analyze("Uganda")
-analyze("United States")
-analyze("France")
-analyze("Japan")
-analyze("Canada")
+analyze("data/gapminder.csv","Algeria")
+analyze("data/gapminder.csv","Afghanistan")
+analyze("data/gapminder.csv","Uganda")
+analyze("data/gapminder.csv","United States")
+analyze("data/gapminder.csv","France")
+analyze("data/gapminder.csv","Japan")
+analyze("data/gapminder.csv","Canada")
 
 for (w in dat) {
   print(dat$country)
@@ -67,3 +68,15 @@ file_list <- list.files(path = "data", pattern = ".csv", full.names = TRUE)
 for (fl in file_list) {
   print(fl)
 }  
+
+analyze_all <- function(countr) {
+  filenames <- list.files(path = "data", pattern = ".csv", full.names = TRUE)
+  for (fl in filenames) {
+    print(fl)
+    analyze(fl, countr)
+  }
+}
+analyze_all("Uganda")
+analyze_all("Canada")
+analyze_all("United States")
+
