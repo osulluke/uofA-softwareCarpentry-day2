@@ -60,3 +60,17 @@ for (c in cont_list)
 }
 
 ```
+
+
+```{r echo=FALSE}
+hist(country_data$lifeExp, xlab = "life expectancy", ylab = "frequency of values", main="Histogram of global life expectancy")
+sp <- c()
+for (i in 20:90) {
+  sp <- c(sp,i)
+  i <- i+2
+}
+hist(country_data$lifeExp, xlab = "life expectancy", ylab = "frequency of values", main="Histogram of global life expectancy (bin size = 2)",breaks=sp)
+cat("\n\n")
+```
+*Looks like there are two peaks, one at 45, and one at ~72 years old.*
+
