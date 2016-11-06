@@ -50,4 +50,20 @@ write.csv(file="data/gapminder_52_97.csv", gapminder_52_97, row.names = FALSE, q
 write.csv(file="data/gapminder_67_07.csv", gapminder_67_07, row.names = FALSE, quote = FALSE)
 summary(dat)
 str(dat)
-for (year in dat$year)
+for (year in dat$year) {
+  
+}
+
+# list files according to a certain pattern in a directory:
+help("list.files")
+list.files(path = "data", pattern = ".csv", full.names = TRUE)
+for (fl in list.files(path = "data", pattern = ".csv", full.names = TRUE)) {
+  print(fl)
+}
+
+# PROBABLY BETTER TO ASSIGN THE FILE LIST TO A VARIABLE, LIKE THIS:
+
+file_list <- list.files(path = "data", pattern = ".csv", full.names = TRUE)
+for (fl in file_list) {
+  print(fl)
+}  
